@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All apps</title>
+</head>
+<body>
+  <h1>heres the car lists</h1>
+  <a href="/app/new">Add a New car</a>
+  <ul>
+      <% applications.forEach((listing) => { %>
+      <li>
+        A car has been listed in <%= applications.country %>
+        for <%= applications.car %>
+        owned by <%= applications.owner.username %>.
+        <a href="/apps/<%= applications.id %>">details</a>
+      </li>
+      <% }) %>
+    </ul>
+</body>
+</html>

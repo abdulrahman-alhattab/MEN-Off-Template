@@ -43,7 +43,7 @@ router.post('/sign-up', async (req, res) => {
 
     const user = await User.create(req.body)
     // when that succeeds let's go ahead and "sign the person in"
-    // rediret them to some page
+    // redirect them to some page
     req.session.user = {
       username: user.username,
       _id: user._id
@@ -64,7 +64,7 @@ router.get('/sign-in', async (req, res) => {
 
 router.post('/sign-in', async (req, res) => {
   try {
-    // try to find the user inthe db
+    // try to find the user in the db
     const { username, password } = req.body
     // make sure the user does not exist
     const userInDatabase = await User.findOne({ username })
@@ -80,7 +80,7 @@ router.post('/sign-in', async (req, res) => {
       password,
       userInDatabase.password
     )
-    // if the pw doesnt match, throw an error
+    // if the pw does'nt match, throw an error
     if (!isValidPassword) {
       console.log('Wrong password')
       return res.send('Username or Password is invalid')
