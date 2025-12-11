@@ -7,14 +7,14 @@
 </head>
 <body>
   <h1>heres the car lists</h1>
-  <a href="/app/new">Add a New car</a>
+  <a href="/apps/new">Add a New car</a>
   <ul>
-      <% applications.forEach((listing) => { %>
+      <% applications.forEach((applications) => { %>
       <li>
         A car has been listed in <%= applications.country %>
         for <%= applications.car %>
         owned by <%= applications.owner.username %>.
-        <a href="/apps/<%= applications.id %>">details</a>
+        <a href="/users/<%= user._id %>">details</a>
       </li>
       <% }) %>
     </ul>

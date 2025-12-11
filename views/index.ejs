@@ -10,13 +10,11 @@
     <a href="./auth/sign-out">sign out</a>
     <% if (user) { %>
     <h1>Welcome to the car show, <%= user.username %>!</h1>
+
+    <a href="/users/<%= user._id %>/applications">view listed items</a>
     <% } else { %>
     <h1>Welcome guest, sign in to proceed.</h1>
-    <p>
-      <%-include('./partials/nav.ejs') %>
-
- 
-    </p>
+    <p><%-include('./partials/nav.ejs') %></p>
     <% } %>
   </body>
 </html>

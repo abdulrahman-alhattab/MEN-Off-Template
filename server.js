@@ -66,8 +66,8 @@ app.use('/auth', authCtrl)
 app.get('/', async (req, res) => {
   res.render('index.ejs')
 })
+app.use('/users/:usersId/applications/', applicationsCtrl)
 app.use(isSignedIn)
-// app.use('/users/:usersId/applications/')
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`)
