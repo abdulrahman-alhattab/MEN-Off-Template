@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 })
 router.get('/new', async (req, params) => {
   try {
-    res.render('apps/new.ejs')
+    res.render('../views/apps/new.ejs')
   } catch (err) {
     console.error(err)
   }

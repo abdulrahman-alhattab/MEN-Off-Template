@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>car post</title>
 </head>
+
 <body>
-<h1>create a post</h1>
+  <h1>create a post</h1>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>Add New Listing</h1>
+  <!-- views/listings/new.ejs -->
+
+  <form action="/applications" method="POST">
+    <label for="country">country:</label>
+    <input type="text" name="country" id="country" required />
+
+    <label for="car">car name:</label>
+    <input type="text" name="car" id="car" required />
+
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price" min="0" required />
+
+    <label for="year">year:</label>
+    <input type="number" name="year" id="year" min="1950" required />
+
+   <label for="damaged">if damaged:</label>
+    <input type="checkbox" />
+
+    <button type="submit">Add Listing</button>
+
+  </form>
 
 </body>
+
 </html>
