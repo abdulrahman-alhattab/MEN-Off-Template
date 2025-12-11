@@ -2,6 +2,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const express = require('express')
 const app = express()
+const path = require('path')
 const session = require('express-session')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
@@ -21,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`)
 })
-
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   session({
     secret: process.env.session_secret,
@@ -39,18 +40,7 @@ app.use(
     })
   })
 )
-app.use(
-  '/vip-lounge',
-  (req, res, next) => {
-    if (req.session.user) {
-      res.locals.user = req.session.user // Store user info for use in the next function
-      next() // Proceed to the next middleware or controller
-    } else {
-      res.redirect('/') // Redirect unauthenticated users
-    }
-  }
-  // The controller handling the '/vip-lounge' route
-)
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -77,11 +67,7 @@ app.get('/', async (req, res) => {
   res.render('index.ejs')
 })
 app.use(isSignedIn)
-app.use('/users/:usersId/applications/')
-
-app.get('/vip-lounge', async (req, res) => {
-  res.send('vipPage')
-})
+// app.use('/users/:usersId/applications/')
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`)
